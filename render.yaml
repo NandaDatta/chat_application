@@ -8,11 +8,11 @@ services:
       - key: NODE_VERSION
         value: 18
 
-  - type: static
+  - type: web
     name: chat-frontend
-    runtime: static
+    runtime: node
     buildCommand: cd frontend && npm install && npm run build
-    publishPath: frontend/dist
+    startCommand: cd frontend && npx serve -s dist -l 10000
     envVars:
       - key: NODE_VERSION
         value: 18
