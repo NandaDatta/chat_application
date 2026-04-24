@@ -1,4 +1,3 @@
-# Create a render.yaml in your root directory
 services:
   - type: web
     name: chat-backend
@@ -11,5 +10,9 @@ services:
 
   - type: static
     name: chat-frontend
+    runtime: static
     buildCommand: cd frontend && npm install && npm run build
     publishPath: frontend/dist
+    envVars:
+      - key: NODE_VERSION
+        value: 18
