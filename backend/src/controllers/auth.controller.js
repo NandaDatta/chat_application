@@ -84,7 +84,7 @@ export const login = async (req, res) => {
 
         const user = await User.findOne({ email });
         if (!user) {
-            return res.status(404).json({
+            return res.status(400).json({
                 success: false,
                 message: 'Invalid credentials',
             });
@@ -121,6 +121,10 @@ export const login = async (req, res) => {
     
 }
 
-export const logout = (req, res) => {
-    res.send('Logout Endpoint');
+export const logout = (_, res) => {
+    res.cookie('jwt', "", {maxAge: 0});
+    res.status(200).json({
+        success: true,
+        message: 'Logged out successfully'
+    });
 }
