@@ -7,12 +7,13 @@ import {
     updateprofile
 } from '../controllers/auth.controller.js'
 import { protectRoute } from '../middleware/auth.middleware.js';
+import { generalLimiter, authLimiter } from '../middleware/rate.limiter.js';
 
 const router = express.Router();
 
-router.post('/signup', signup);
+router.post('/signup', authLimiter, signup);
 
-router.post('/login', login);
+router.post('/login',authLimiter, login);
 
 router.post('/logout', logout);
 

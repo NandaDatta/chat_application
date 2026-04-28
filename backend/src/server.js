@@ -5,6 +5,8 @@ import cookieParser from 'cookie-parser';
 
 import { connectDB } from './config/db.js';
 
+import { generalLimiter } from './middleware/rate.limiter.js';
+
 import authRoutes from './routes/auth.route.js';
 import messageRoutes from './routes/message.route.js';
 
@@ -17,6 +19,8 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cookieParser());
+
+app.use(generalLimiter);
 
 app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
