@@ -17,5 +17,8 @@
     "url": "https://github.com/NandaDatta/chat_application/issues"
   },
   "homepage": "https://github.com/NandaDatta/chat_application#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "react-router": "^7.14.2"
+  }
 }
