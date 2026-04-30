@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import ChatPage from './pages/ChatPage'
 import LoginPage from './pages/LoginPage'
-import SignupPage from './pages/SignupPage'
+import SignUpPage from './pages/SignupPage'
 import { useAuthStore } from './store/useAuthStore'
 import PageLoader from './components/PageLoader'
 import { Toaster } from 'react-hot-toast';
@@ -30,7 +30,7 @@ const App = () => {
       <Routes>
         <Route  path='/' element={ authUser ? <ChatPage /> : <Navigate to={"/login"}/> }/>
         <Route  path='/login' element={ !authUser ? <LoginPage /> : <Navigate to={'/'} /> } />
-        <Route  path='/signup' element={ !authUser ? <SignupPage /> : <Navigate to={'/'} />} />
+        <Route  path='/signup' element={ !authUser ? <SignUpPage /> : <Navigate to={'/'} />} />
       </Routes>
       <Toaster />
     </div>
