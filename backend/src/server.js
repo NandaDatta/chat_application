@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
+import cors from 'cors';
 
 import { connectDB } from './config/db.js';
 
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
 app.use(generalLimiter);
+app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
